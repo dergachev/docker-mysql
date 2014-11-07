@@ -1,8 +1,10 @@
-FROM sameersbn/ubuntu:14.04.20141026
-MAINTAINER sameer@damagehead.com
+FROM ubuntu:latest
+MAINTAINER alex@evolvingweb.ca
 
-RUN apt-get update \
- && apt-get install -y mysql-server \
+ADD detect_squid_deb_proxy /tmp/detect_squid_deb_proxy
+RUN bash /tmp/detect_squid_deb_proxy && apt-get update
+
+RUN apt-get install -y mysql-server \
  && rm -rf /var/lib/mysql/mysql \
  && rm -rf /var/lib/apt/lists/* # 20140918
 
