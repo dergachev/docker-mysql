@@ -1,4 +1,5 @@
+IMAGE = dergachev/mysql
 all: build
 
 build:
-	@docker build --tag=dergachev/mysql .
+	@docker build --tag=$(IMAGE) .
